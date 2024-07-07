@@ -1,0 +1,12 @@
+# mybatis配置
+mybatis:
+  # 扫描resources下的mapper下的所有xml文件
+  mapper-locations: classpath:/mapper/*.xml
+
+# spring mysql
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/employment
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver

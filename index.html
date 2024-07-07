@@ -1,0 +1,241 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/echarts.min.js"></script> 
+<script type="text/javascript" src="js/js.js"></script> 
+<script type="text/javascript" src="js/jquery.limarquee.js"></script> 
+<script type="text/javascript" src="js/jquery.cxselect.min.js"></script> 
+	
+<link rel="stylesheet" href="css/comon0.css">
+</head>
+<body>
+<div style="background:#000d4a url(images/bg.jpg) center top;">
+	<div class="loading">
+  <div class="loadbox"> <img src="picture/loading.gif"> 页面加载中... </div>
+</div>
+	<div class="back"></div>
+<div class="head">
+	 <div class="weather"><span id="showTime"></span></div>
+  <h1>2023毕业生就业大数据分析可视化展示</h1>
+
+</div>
+	<script>
+var t = null;
+    t = setTimeout(time,1000);//開始运行
+    function time()
+    {
+       clearTimeout(t);//清除定时器
+       dt = new Date();
+		var y=dt.getFullYear();
+		var mt=dt.getMonth()+1;
+		var day=dt.getDate();
+       var h=dt.getHours();//获取时
+       var m=dt.getMinutes();//获取分
+       var s=dt.getSeconds();//获取秒
+       document.getElementById("showTime").innerHTML = y+"年"+mt+"月"+day+"日"+h+"时"+m+"分"+s+"秒";
+       t = setTimeout(time,1000); //设定定时器，循环运行     
+    } 
+
+</script>
+    <!--xf---------------------------------------------------------------->
+    <div class="mainbox">
+        <ul class="clearfix">
+            <li>
+                <div class="boxall" style="height:400px;">
+                    <div class="alltitle">10大热门岗位及其平均薪资</div>
+                    <div class="navboxall" id="echart5"></div>
+                </div>
+
+
+                <div class="boxall" style="height:260px;">
+                    <div class="alltitle">公司招聘</div>
+                    <div class="navboxall" >
+                        <div class="wraptit">
+                            <span>公司</span><span>招聘人数</span><span>岗位</span><span>工资</span>
+                        </div>
+                        <div class="wrap">
+
+                            <ul   id="comp">
+                                <script>
+                                    $.ajax({
+                                        type: "get",
+                                        url: "http://localhost:8080/company/getCompanyTopList",
+                                        success: function (data) {
+                                            console.log('公司招聘...')
+                                            console.log(data)
+                                            for (let i = 0; i < data.length; i++) {
+                                                let company = data[i];
+                                                console.log(company)
+                                                if(i==0){
+                                                    $("<li><p><span>"+company.company+"</span><span>"+company.number+"</span><span>"+company.post+"</span><span>"+company.salary+"</span></p></li>").appendTo("#comp");
+                                                }else if(i==1){
+                                                    $( "<li><p><span>"+company.company+"</span><span>"+company.number+"</span><span>"+company.post+"</span><span>"+company.salary+"</span></p></li>").appendTo("#comp");
+                                                }else if(i==2){
+                                                    $("<li><p><span>"+company.company+"</span><span>"+company.number+"</span><span>"+company.post+"</span><span>"+company.salary+"</span></p></li>").appendTo("#comp");
+                                                }else if(i==3){
+                                                    $("<li><p><span>"+company.company+"</span><span>"+company.number+"</span><span>"+company.post+"</span><span>"+company.salary+"</span></p></li>").appendTo("#comp");
+                                                }else if(i==4){
+                                                    $( "<li><p><span>"+company.company+"</span><span>"+company.number+"</span><span>"+company.post+"</span><span>"+company.salary+"</span></p></li>").appendTo("#comp");
+                                                }
+                                                else if(i==5){
+                                                    $("<li><p><span>"+company.company+"</span><span>"+company.number+"</span><span>"+company.post+"</span><span>"+company.salary+"</span></p></li>").appendTo("#comp");
+                                                }
+                                                else if(i==6){
+                                                    $( "<li><p><span>"+company.company+"</span><span>"+company.number+"</span><span>"+company.post+"</span><span>"+company.salary+"</span></p></li>").appendTo("#comp");
+                                                }
+                                                else if(i==7){
+                                                    $( "<li><p><span>"+company.company+"</span><span>"+company.number+"</span><span>"+company.post+"</span><span>"+company.salary+"</span></p></li>").appendTo("#comp");
+                                                }else if(i==8){
+                                                    $("<li><p><span>"+company.company+"</span><span>"+company.number+"</span><span>"+company.post+"</span><span>"+company.salary+"</span></p></li>").appendTo("#comp");
+                                                }
+                                                else if(i==9){
+                                                    $("<li><p><span>"+company.company+"</span><span>"+company.number+"</span><span>"+company.post+"</span><span>"+company.salary+"</span></p></li>").appendTo("#comp");
+                                                }
+                                            }
+                                            $('.wrap,.adduser').liMarquee({
+                                                direction: 'up',//身上滚动
+                                                runshort: false,//内容不足时不滚动
+                                                scrollamount: 20//速度
+                                            });
+                                        }
+                                    })
+
+                                </script>
+                            </ul>
+                            <!--xf---------------------------------------------------------------->
+        </div>
+		  </div>
+      </div>
+      <div class="boxall" style="height:260px;">
+        <div class="alltitle">大学生就业满意度(单位:万)</div>
+        
+       <div class="navboxall" id="echart1"></div>
+      </div>
+    </li>
+    <li>
+      
+    <div class="boxall" style="height:230px">
+		<div class="clearfix navboxall" style="height: 100%">
+		<div class="pulll_left num">
+			<div class="numbt">毕业生总数<span>(单位:万人)</span></div>
+			<div class="numtxt">1158 </div>
+			</div>
+		<div class="pulll_right zhibiao">
+			<div class="zb1"><span>考公</span><div id="zb1"></div></div>
+			<div class="zb2"><span>考研</span><div id="zb2"></div></div>
+			<div class="zb3"><span>就业</span><div id="zb3"></div></div>
+		</div>
+		</div>
+    </div>
+        <!---zxy ----------------------------------------------------- --->
+        <div class="boxall" style="height:350px">
+            <div class="alltitle">热门城市应届就业情况</div>
+            <div class="navboxall" id="echart4"></div>
+
+        </div>
+        <div class="boxall" style="height:340px">
+            <div class="alltitle">热门城市薪资情况</div>
+            <div class="navboxall" id="echart3"></div>
+      </div>
+        <!---zxy ----------------------------------------------------- --->
+    </li>
+
+
+      <!---ylp ----------------------------------------------------- --->
+      <li>
+          <div class="boxall" style="height:300px">
+              <div class="alltitle">2023全球就业能力大学排行榜</div>
+              <div class="navboxall">
+                  <table class="table1" width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody id="table1">
+                      <tr>
+                          <th scope="col">排名</th>
+                          <th scope="col">大学</th>
+                          <th scope="col">排名</th>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+          <div class="boxall" style="height: 300px">
+              <div class="alltitle">2023部分专业的就业率排行榜</div>
+              <div class="navboxall">
+                  <table class="table1" width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody id="table2">
+                      <tr>
+                          <th scope="col">排名</th>
+                          <th scope="col">专业</th>
+                          <th scope="col">就业率</th>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+
+          <script>
+              $.ajax({
+                  type: "get",
+                  url: "http://localhost:8080/Srank/getSrankList",
+                  success: function (data) {
+                      console.log(data)
+                      for (let i = 0; i < data.length; i++) {
+                          let teamTop = data[i];
+                          console.log(teamTop)
+                          // 第一名
+                          $("<tr>\n" +
+                              "                <td><span>" + (i + 1) + "</span></td>\n" +
+                              "                <td>" + teamTop.name + "</td>\n" +
+                              "                <td>" + teamTop.rank + "</td>\n" +
+                              "            </tr>").appendTo("#table1");
+                      }
+                  }
+              })
+
+          </script>
+
+          <script>
+              $.ajax({
+                  type: "get",
+                  url: "http://localhost:8080/Mrate/getMrateList",
+                  success: function (data) {
+                      console.log(data)
+                      for (let i = 0; i < data.length; i++) {
+                          let teamTop = data[i];
+                          console.log(teamTop)
+                              $("<tr>\n" +
+                                  "                <td><span>"+(i+1)+"</span></td>\n" +
+                                  "                <td>"+teamTop.name+"</td>\n" +
+                                  "                <td>"+teamTop.rate+"</td>\n" +
+                                  "            </tr>").appendTo("#table2");
+                      }
+                  }
+              })
+
+          </script>
+          <!---ylp ----------------------------------------------------- --->
+          <div class="boxall" style="height:320px">
+              <div class="alltitle">大学生就业行业分布(单位:万)</div>
+              <div class="navboxall" id="echart2"></div>
+          </div>
+      </li>
+  </ul>
+</div>
+</div>
+
+	<script>
+
+$(function(){
+	$('.wrap,.adduser').liMarquee({
+		direction: 'up',//身上滚动 
+		runshort: false,//内容不足时不滚动
+		scrollamount: 20//速度
+	});
+});
+
+</script> 
+	
+</body>
+</html>
